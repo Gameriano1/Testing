@@ -280,7 +280,7 @@ class defs():
 
         defs.bingantibug('//*[@id="idSIButton9"]', driver)
         driver.find_element('xpath', '//*[@id="idSIButton9"]').click()
-        pickle.dump(driver.get_cookies(), open(r"paths\cookies.pkl", "wb"))
+        pickle.dump(driver.get_cookies(), open(fr"paths\cookies{name}.pkl", "wb"))
         print('Loguei no bing')
         driver.close()
 
@@ -294,11 +294,11 @@ class defs():
         driver.minimize_window()
         driver.maximize_window()
         driver.maximize_window()
-        cookies = pickle.load(open("cookies.pkl", "rb"))
+        cookies = pickle.load(open(f"cookies{name}.pkl", "rb"))
         for cookie in cookies:
             driver.add_cookie(cookie)
         driver.get('https://rewards.microsoft.com/')
-        cookies2 = pickle.load(open("cookies3.pkl", "rb"))
+        cookies2 = pickle.load(open(f"cookies{name}.pkl", "rb"))
         for cookie in cookies2:
             driver.add_cookie(cookie)
         driver.get('https://rewards.microsoft.com/')
@@ -517,7 +517,7 @@ class defs():
         print(f"pesquisando {num} vezes...")
         driver3.get('http://bing.com')
         time.sleep(2)
-        cookies = pickle.load(open(r"paths\cookies.pkl", "rb"))
+        cookies = pickle.load(open(fr"paths\cookies{name}.pkl", "rb"))
         for cookie in cookies:
             driver3.add_cookie(cookie)
         Resultyy = ''.join(random.choice(string.ascii_letters) for i in range(8))
