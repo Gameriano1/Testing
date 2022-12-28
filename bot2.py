@@ -48,6 +48,7 @@ def configuracoesgerais():
     return (vvarnum, contasprontas, rewards, dcontas, localcon, localrewards, delay, paisesnome, vpne,name)
 
 vvarnum, contasprontas, rewards, dcontas, localcon, localrewards, delay, paisesnome, vpne,name = configuracoesgerais()
+rewards = rewards+name
 
 with open('contas.json') as contas:
     acc = json.load(contas)
@@ -478,7 +479,7 @@ class defs():
         terminar = pyautogui.locateCenterOnScreen('terminar.png', confidence=0.7)
         pyautogui.click(terminar)
 
-        rewards = 'rewardss'
+        rewards = 'rewardss' + name
 
     def achar_task500():
         global vvar
