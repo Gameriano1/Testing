@@ -693,7 +693,7 @@ class defs():
             clicarrewards()
 
     def printqrs():
-        im2 = pyautogui.screenshot(r'paths\rewardss.png')
+        im2 = pyautogui.screenshot(fr'paths\rewardss{name}.png')
 
     def tentar():
 
