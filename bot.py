@@ -793,7 +793,6 @@ def main():
         defs.abrir_rewards()
         time.sleep(3)
         win = pygetwindow.getWindowsWithTitle('Microsoft Rewards')[0]
-        win.size = (1535, 800)
         time.sleep(2)
         defs.detalhamento()
         if paises == "eua":
