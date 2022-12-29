@@ -583,9 +583,13 @@ class defs():
                 while tem == 'nao':
                     tem = defs.clicar(var="qr", mouse=False,vp=False)
                 pyautogui.press('enter')
-                tem = defs.clicar(var="moedagigante", mouse=False,vp=False)
+                vvar = "moedagigante"
+                defs.printqrs()
+                defs.IA2()
                 while tem == 'sim':
-                    tem = defs.clicar(var="moedagigante", mouse=False,vp=False)
+                    vvar = "moedagigante"
+                    defs.printqrs()
+                    defs.IA2()
                 subprocess.run('taskkill /f /im opera.exe', capture_output=True)
                 time.sleep(4)
                 clicarbing('sim')
@@ -715,6 +719,9 @@ class defs():
             bbox = (rect.left+750, rect.top+550, rect.right-10, rect.bottom-10)
             shot = sct.grab(bbox)
             mss_tools.to_png(shot.rgb, shot.size, output=r'paths\rewardss.png')
+
+    def printqrs():
+        im2 = pyautogui.screenshot(r'paths\rewardss.png')
 
     def mudarregiao():
         if paises == "eua":
