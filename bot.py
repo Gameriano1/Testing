@@ -247,7 +247,7 @@ class defs():
                 vvar = 'moedagigante'
                 defs.tentar()
                 defs.IA2()
-            subprocess.run('taskkill /f /im opera.exe', capture_output=True)
+            subprocess.run('taskkill /f /im msedge.exe', capture_output=True)
             time.sleep(4)
             defs.clicarnave()
 
@@ -516,7 +516,6 @@ class defs():
         chrome_options.headless = True
 
         driver3 = webdriver.Chrome('chromedriver',desired_capabilities=caps, options=chrome_options)
-        print(f"pesquisando {num} vezes...")
         driver3.get('http://bing.com')
         time.sleep(2)
         cookies = pickle.load(open(r"paths\cookies.pkl", "rb"))
@@ -532,7 +531,6 @@ class defs():
             driver3.switch_to.window(chwd[-1])
             Resultyy = ''.join(random.choice(string.ascii_letters) for i in range(8))
             urls = f'https://www.bing.com/search?q={Resultyy}'
-        print("Terminei.")
         driver3.quit()
 
     def clicar(var, mouse = True, num = 0, vp = True):
@@ -563,11 +561,11 @@ class defs():
     def tasksn(qual):
         def clicarbing(fazer='nao'):
             global vvar
-            defs.clicar("nave", num=1)
+            defs.clicar("conc")
             tem = defs.clicar("bing", mouse=False)
             while tem == 'nao':
-                mouse.wheel(-6.5)
-                time.sleep(0.9)
+                pydirectinput.press('down')
+                time.sleep(0.5)
                 tem = defs.clicar("bing", mouse=False)
             tem = defs.clicar("conc", mouse=False)
             if fazer == 'nao':
@@ -583,25 +581,32 @@ class defs():
                 while tem == 'nao':
                     tem = defs.clicar(var="qr", mouse=False,vp=False)
                 pyautogui.press('enter')
-                vvar = "moedagigante"
-                defs.printqrs()
+                vvar = "bing"
+                defs.tentarvp()
                 defs.IA2()
-                while tem == 'sim':
-                    vvar = "moedagigante"
-                    defs.printqrs()
+                while existe2 == 'sim':
+                    vvar = "bing"
+                    defs.tentar()
                     defs.IA2()
-                subprocess.run('taskkill /f /im opera.exe', capture_output=True)
+                subprocess.run('taskkill /f /im msedge.exe', capture_output=True)
+                vvar = "bing"
+                defs.tentarvp()
+                defs.IA2()
+                while existe2 == 'sim':
+                    vvar = "bing"
+                    defs.tentarvp()
+                    defs.IA2()
                 time.sleep(4)
                 clicarbing('sim')
 
-        def clicarloja(scroll = -6.5):
+        def clicarloja():
             global vvar
             global vvarnum
-            defs.clicar(var="bing",num=1)
+            defs.clicar("conc")
             tem = defs.clicar(var="loja",mouse=False)
             while tem == 'nao':
-                mouse.wheel(scroll)
-                time.sleep(0.9)
+                pydirectinput.press('down')
+                time.sleep(0.5)
                 tem = defs.clicar(var="loja",mouse=False)
             tem = defs.clicar(var="conc",mouse=False)
             while tem == 'nao':
@@ -614,16 +619,15 @@ class defs():
                 while tem == 'nao':
                     tem = defs.clicar(var="moedagigante",vp=False,mouse=False)
                 vvarnum = 0.9
-                clicarloja(-6.5)
+                clicarloja()
         
-        def clicarxbox(scroll = -6.5):
+        def clicarxbox():
             global vvar
-            defs.clicar(var="loja",num=1)
-            time.sleep(0.4)
+            defs.clicar("conc")
             tem = defs.clicar(var="xbox",mouse=False)
             while tem == 'nao':
-                mouse.wheel(scroll)
-                time.sleep(0.9)
+                pydirectinput.press('down')
+                time.sleep(0.5)
                 tem = defs.clicar(var="xbox", mouse=False)
             tem = defs.clicar(var="conc", mouse=False)
             while tem == 'nao':
@@ -633,17 +637,16 @@ class defs():
                 while tem == 'nao':
                     tem = defs.clicar(var="novoapp", mouse=False,vp=False)
                 tem = defs.clicar(var="bola",vp=False)
-                clicarxbox(-6.5)
+                clicarxbox()
 
-        def clicarmoeda(scroll = -6.5):
+        def clicarmoeda():
             global vvar
             global vvarnum
-            defs.clicar(var="xbox",num=1)
-            time.sleep(0.9)
+            defs.clicar("conc")
             tem = defs.clicar(var="moeda",mouse=False)
             while tem == 'nao':
-                mouse.wheel(scroll)
-                time.sleep(0.9)
+                pydirectinput.press('down')
+                time.sleep(0.5)
                 tem = defs.clicar(var="moeda",mouse=False)
             tem = defs.clicar(var="conc",mouse=False)
             while tem == 'nao':
@@ -657,19 +660,17 @@ class defs():
                 while tem == 'nao':
                     tem = defs.clicar(var="moedagigante",vp=False,mouse=False)
                 vvarnum = 0.9
-                clicarmoeda(-6.5)
+                clicarmoeda()
 
-        def clicarrewards(scroll = -6.5):
+        def clicarrewards():
             global vvar
             global vvarnum
-            defs.clicar(var="moeda",num=1)
-            time.sleep(0.9)
+            defs.clicar("conc")
             tem = defs.clicar(var="rewards",mouse=False)
             while not tem == 'sim':
-                mouse.wheel(scroll)
-                time.sleep(0.9)
+                pydirectinput.press('down')
+                time.sleep(0.5)
                 tem = defs.clicar(var="rewards",mouse=False)
-                time.sleep(2)
             tem = defs.clicar(var="conc",mouse=False)
             while tem == 'nao':
                 tem = defs.clicar(var="rewards")
@@ -681,7 +682,7 @@ class defs():
                 while tem == 'nao':
                     tem = defs.clicar(var="moedagigante",vp=False,mouse=False)
                 vvarnum = 0.9
-                clicarrewards(-6.5)
+                clicarrewards()
         if qual == 'bing':
             clicarbing()
         elif qual == 'loja':
@@ -720,8 +721,8 @@ class defs():
             shot = sct.grab(bbox)
             mss_tools.to_png(shot.rgb, shot.size, output=r'paths\rewardss.png')
 
-    def printqrs():
-        im2 = pyautogui.screenshot(r'paths\rewardss.png')
+    # def printqrs():
+    #     im2 = pyautogui.screenshot(r'paths\rewardss.png')
 
     def mudarregiao():
         if paises == "eua":
@@ -812,13 +813,14 @@ def main():
 
         defs.tasksn('bing')
 
-        if paises == "eua":
-            results = Parallel(n_jobs=4)(delayed(defs.abs)(10) for _ in range(0, 3))
-        results = Parallel(n_jobs=4)(delayed(defs.abs)(10,  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.42") for _ in range(0, 4))
+        # if paises == "eua":
+        #     results = Parallel(n_jobs=4)(delayed(defs.abs)(10) for _ in range(0, 3))
+        # results = Parallel(n_jobs=4)(delayed(defs.abs)(10,  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.42") for _ in range(0, 4))
         defs.tasksn('loja')
         defs.tasksn('xbox')
         defs.tasksn('moeda')
-        defs.tasksn('rewards')
+        if paises == "eua":
+            defs.tasksn('rewards')
         # Pesquisa.
 
         subprocess.run('taskkill /f /im Microsoft.Rewards.Xbox.exe', capture_output=True)
